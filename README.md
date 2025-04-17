@@ -81,6 +81,12 @@ It will instantly expose a `GET /patients` endpoint.
 - Admin UI for managing endpoints
 - Validation and SQL security improvements
 
+## 💖 Support This Project
+
+If you find this project useful and would like to support its development, consider making a donation. Your contribution helps keep the project active and maintained!
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/donate/?hosted_button_id=RS36KNXUFQ3TN)
+
 ## 📄 License
 
 Apache 2.0 – see the `LICENSE` file for details.
