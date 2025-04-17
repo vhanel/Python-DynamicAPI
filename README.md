@@ -83,4 +83,4 @@ It will instantly expose a `GET /patients` endpoint.
 
 ## 📄 License
 
-MIT License – see the `LICENSE` file for details.
+Apache 2.0 – see the `LICENSE` file for details.
