@@ -1,0 +1,9 @@
+CREATE TABLE apis (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    endpoint VARCHAR(200) NOT NULL UNIQUE,
+    sql_query TEXT NOT NULL,
+    tag VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,    
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
