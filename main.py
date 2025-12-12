@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 
 from services.dynamic_monitor import DynamicRouteMonitor
-from routers import api_routes
+from routers import api_routes, observability_routes
 
 from dotenv import load_dotenv
-from observability import setup_observability
+from services.observability import setup_observability
 
 import asyncio
 import logging
@@ -66,6 +66,7 @@ meter = setup_observability(app)
 
 # Routes
 app.include_router(api_routes.router)
+app.include_router(observability_routes.router)
 
 
 # Monitor
@@ -87,25 +88,3 @@ def read_root():
 def health():
     logging.info("Health check accessed")
     return {"status": "ok"}
-
-@app.get("/test-logs")
-def test_logs():
-    logging.info("Info log test")
-    logging.warning("Warning log test")
-    logging.error("Error log test")
-    return {"message": "Logs sent to Grafana"}
-
-@app.get("/test-metrics")
-def test_metrics():
-    """Endpoint to test custom metrics"""
-    
-    # Create a custom counter for this endpoint
-    test_counter = meter.create_counter(
-        name="test_endpoint_calls",
-        description="Number of calls to test endpoint"
-    )
-    
-    test_counter.add(1, {"endpoint": "test-metrics"})
-    
-    logging.info("Custom metrics test executed")
-    return {"message": "Custom metrics sent to Grafana"}
